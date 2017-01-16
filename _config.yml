@@ -1,11 +1,11 @@
 # Site wide configuration
 
-title: Site Title
-locale: en_US
-description: Describe your website here.
-logo: site-logo.png
+title: 菜鸟博客
+locale: zh_CN
+description: 我的第一个Blog，用来分享和记录自己的学习历程.
+logo: newbie1993.png
 search: true
-url: http://localhost:4000
+url:
 
 # Jekyll configuration
 
@@ -36,20 +36,20 @@ exclude: ["lib", "config.rb", "Capfile", "config", "log", "Rakefile", "Rakefile.
 
 # Site owner
 owner:
-  name: Your Name
-  avatar: bio-photo.jpg
-  email: you@email.com
+  name: NewBie1993
+  avatar: newbie1993.png
+  email: bangencao1993@gmail.com
   disqus-shortname:
   twitter: #username
   facebook: #username
-  github: #username
+  github: NewBie1993
   stackexchange: #http://stackoverflow.com/users/123456/username
   linkedin: #username
   instagram: #username
   flickr: #username
   tumblr: #username
   pinterest: #username
-  weibo: #userid
+  weibo: bangencao1993
   google:
     plus: #username
     analytics:
