@@ -43,7 +43,7 @@
 .entry-tags {
 	margin: 2em 0 0;
   padding: 0;
-	text-transform: uppercase;
+	/* text-transform: uppercase; */
 	@include font-size(16);
 	font-weight: 600;
 
@@ -115,7 +115,7 @@ span + .entry-title {
 
 .entry-meta {
 	@include span-columns(12);
-	text-transform: uppercase;
+	/* text-transform: uppercase; */
 	@include font-size(14);
 
 	a {
