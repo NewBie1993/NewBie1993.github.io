@@ -1,26 +1,19 @@
 ---
 layout: page
-title: About the Jekyll Theme
-excerpt: "So Simple is a responsive Jekyll theme for your words and images."
-modified: 2014-08-08T19:44:38.564948-04:00
-image:
-  feature: so-simple-sample-image-4.jpg
-  credit: WeGraphics
-  creditlink: http://wegraphics.net/downloads/free-ultimate-blurred-background-pack/
+title: About My Blog
+excerpt: "Some guidelines for reading my blog."
+modified: 
 ---
 
-Looking for a simple, responsive, theme for your Jekyll powered blog? Well look no further. Here be **So Simple Theme**, the follow up to [**Minimal Mistakes**](http://mmistakes.github.io/minimal-mistakes) --- by designer slash illustrator [Michael Rose](http://mademistakes.com).
+如本博客的描述所言，本博客用来分享和记录我自己的学习历程。
 
-## So Simple Theme is all about:
+## Articles
+转载自其他地方的一些文章会被归档在该目录下，即本人不拥有该目录下所有内容的版权。
 
-* Responsive templates. Looking good on mobile, tablet, and desktop.
-* Gracefully degrading in older browsers. Compatible with Internet Explorer 9+ and all modern browsers.
-* Minimal embellishments and subtle animations.
-* Optional large feature images for posts and pages.
-* [Custom 404 page]({{ site.url }}/404.html) to get you started.
-* [Simple site search](https://github.com/christian-fei/Simple-Jekyll-Search)
-* Support for Disqus Comments
+## Blog
+该目录归档本人在学习中的一些总结和心得。事实上，严格来说，有的可能是我原创，有
+的是从各种学习书籍中摘抄的重点内容。
 
-<a markdown="0" href="{{ site.url }}/theme-setup" class="btn">Install So Simple Theme</a>
-
-[^1]: Example: *domain.com/category-name/post-title*
+## Tags
+本博客内的内容均会打上标签，用来方便归档和查询。所有标签均在该目录下显示，通过
+该目录下的标签可以直接跳转至对应的文章。
