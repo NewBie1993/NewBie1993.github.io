@@ -24,6 +24,7 @@ leaves (external nodes) of the binary search tree and the normal, key-bearing no
 as being internal nodes of the tree.
 
 A red-black tree is a binary tree that satisfies the following red-black properties:
+
 1. Every node is either red or black.
 2. The root is black.
 3. Every leaf (NIL) is black.
