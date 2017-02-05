@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Red-Black Trees"
+title: "Red-Black Trees(1)"
 categories: blog
 excerpt:
 tags: [Algotithms, Red-Black-Trees]
@@ -12,6 +12,7 @@ modified:
 ---
 
 # Properties of red-black trees
+
 A red-black tree is a binary search tree with one extra bit of storage per node: its
 color, which can be either RED or BLACK. By constraining the node colors on any
 simple path from the root to a leaf, red-black trees ensure that no such path is more
@@ -55,3 +56,27 @@ node x down to a leaf the black-height of the node, denoted bh(x). By property 5
 the notion of black-height is well defined, since all descending simple paths from
 the node have the same number of black nodes. We define the black-height of a
 red-black tree to be the black-height of its root.
+
+<figure>
+	<img src="../../images/RedBlackTree/red-black-tree.png" alt="rotation">
+	<figcaption>Figure 1 red-black tree.</figcaption>
+</figure>
+
+# Rotations
+
+Because they modify the tree, the result may violate the red-black properties. To
+restore these properties, we must change the **colors of some of the nodes in the
+tree** and also **change the pointer structure**.
+
+We change the pointer structure through rotation, which is a local operation in
+a search tree that preserves the binary-search-tree property. Figure 2 shows the
+two kinds of rotations: **left rotations** and **right rotations**. When we do a left rotation
+on a node x, we assume that its right child y is not T:nil; x may be any node in
+the tree whose right child is not T:nil. The left rotation “pivots” around the link
+from x to y. It makes y the new root of the subtree, with x as y’s left child and y’s
+left child as x’s right child.
+
+<figure>
+	<img src="../../images/RedBlackTree/rotation.png" alt="rotation">
+	<figcaption>Figure 2 rotation.</figcaption>
+</figure>
