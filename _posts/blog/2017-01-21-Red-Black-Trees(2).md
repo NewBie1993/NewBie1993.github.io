@@ -37,7 +37,7 @@ RB-INSERT(T, z)
 We can insert a node into an n-node red-black tree in O(lg n) time. To do so, we
 insert node z into the tree T as if it were an ordinary binary search tree, and then we
 color z red. To guarantee that the red-black properties are preserved, we then call an
-auxiliary procedure RB-INSERT-FIXUP to recolor nodes and perform rotations.
+auxiliary procedure `RB-INSERT-FIXUP` to recolor nodes and perform rotations.
 
 ```
 RB-INSERT-FIXUP(T, z)
@@ -61,32 +61,30 @@ RB-INSERT-FIXUP(T, z)
 ```
 
 <figure>
-	<img src="../../images/RedBlackTree/red-black-tree-fix.png" alt="rotation">
+	<img src="../../images/RedBlackTree/red-black-tree-fix.png" alt="red-black-tree-fix">
 	<figcaption>Figure 1 The operation of RB-INSERT-FIXUP.</figcaption>
 </figure>
 
-To understand how RB-INSERT-FIXUP works, we shall break our examination
+To understand how `RB-INSERT-FIXUP` works, we shall break our examination
 of the code into three major steps. 
 
 - First, we shall determine what violations of
-the red-black properties are introduced in RB-INSERT when node z is inserted
+the red-black properties are introduced in `RB-INSERT` when node z is inserted
 and colored red.
 - Second, we shall examine the overall goal of the while loop in
 lines 1–15.
 - Finally, we shall explore each of the three cases within the while
 loop’s body and see how they accomplish the goal.
 
-Which of the red-black properties might be violated upon the call to RBINSERT-
-FIXUP? Property 1 certainly continues to hold, as does property 3, since
-both children of the newly inserted red node are the sentinel T:nil. Property 5,
-which says that the number of black nodes is the same on every simple path from
-a given node, is satisfied as well, because node z replaces the (black) sentinel, and
-node z is red with sentinel children. **Thus, the only properties that might be violated
-are property 2, which requires the root to be black, and property 4, which
-says that a red node cannot have a red child.** Both possible violations are due to z
-being colored red. Property 2 is violated if z is the root, and property 4 is violated
-if z’s parent is red. Figure 13.4(a) shows a violation of property 4 after the node z
-has been inserted.
+Which of the red-black properties might be violated upon the call to `RBINSERT-FIXUP`?
+Property 1 certainly continues to hold, as does property 3, since both children of the
+newly inserted red node are the sentinel T.nil. Property 5, which says that the number
+of black nodes is the same on every simple path from a given node, is satisfied as well,
+because node z replaces the (black) sentinel, and node z is red with sentinel children.
+**Thus, the only properties that might be violated are property 2, which requires the
+root to be black, and property 4, which says that a red node cannot have a red child.**
+Both possible violations are due to z being colored red. Property 2 is violated if z is
+the root, and property 4 is violated if z’s parent is red.
 
 The while loop in lines 1–15 maintains the following three-part invariant at the
 start of each iteration of the loop:
@@ -100,28 +98,30 @@ violates property 4, it is because both z and z.p are red.
 
 **Initialization**: Prior to the first iteration of the loop, we started with a
 red-black tree with no violations, and we added a red node z. We show that each part of
-the invariant holds at the time RB-INSERT-FIXUP is called:
+the invariant holds at the time `RB-INSERT-FIXUP` is called:
 
-1. When RB-INSERT-FIXUP is called, z is the red node that was added.
+1. When `RB-INSERT-FIXUP` is called, z is the red node that was added.
 2. If z.p is the root, then z.p started out black and did not change prior to the
-call of RB-INSERT-FIXUP.
+   call of RB-INSERT-FIXUP.
 3. We have already seen that properties 1, 3, and 5 hold when RB-INSERTFIXUP
-is called.
-If the tree violates property 2, then the red root must be the newly added
-node z, which is the only internal node in the tree. Because the parent and
-both children of z are the sentinel, which is black, the tree does not also
-violate property 4. Thus, this violation of property 2 is the only violation of
-red-black properties in the entire tree.
-If the tree violates property 4, then, because the children of node z are black
-sentinels and the tree had no other violations prior to z being added, the violation
-must be because both z and z.p are red. Moreover, the tree violates no other red-black
-properties.
+   is called.
+
+   If the tree violates property 2, then the red root must be the newly added
+   node z, which is the only internal node in the tree. Because the parent and
+   both children of z are the sentinel, which is black, the tree does not also
+   violate property 4. Thus, this violation of property 2 is the only violation of
+   red-black properties in the entire tree.
+
+   If the tree violates property 4, then, because the children of node z are black
+   sentinels and the tree had no other violations prior to z being added, the violation
+   must be because both z and z.p are red. Moreover, the tree violates no other red-black
+   properties.
 
 **Termination**: When the loop terminates, it does so because z.p is black. (If z is
 the root, then z.p is the sentinel T.nil, which is black.) Thus, the tree does not
 violate property 4 at loop termination. By the loop invariant, the only property
 that might fail to hold is property 2. Line 16 restores this property, too, so that
-when RB-INSERT-FIXUP terminates, all the red-black properties hold.
+when `RB-INSERT-FIXUP` terminates, all the red-black properties hold.
 
 **Maintenance**: We actually need to consider six cases in the while loop, but three
 of them are symmetric to the other three, depending on whether line 2 determines
@@ -158,7 +158,7 @@ remains black at the start of the next iteration.
 introduce a violation of properties 1 or 3.
 
 <figure>
-	<img src="../../images/RedBlackTree/case1-red-black-tree-fix.png" alt="rotation">
+	<img src="../../images/RedBlackTree/case1-red-black-tree-fix.png" alt="red-black-tree-fix case 1">
 	<figcaption>Figure 2 Case 1 of the procedure RB-INSERT-FIXUP.</figcaption>
 </figure>
 
@@ -195,7 +195,7 @@ argued, z.p will be black upon the next test in line 1, and the loop body will n
 execute again.)
 
 <figure>
-	<img src="../../images/RedBlackTree/case2,3-red-black-tree-fix.png" alt="rotation">
+	<img src="../../images/RedBlackTree/case2,3-red-black-tree-fix.png" alt="red-black-tree-fix case 2 and 3">
 	<figcaption>Figure 3 Cases 2 and 3 of the procedure RB-INSERT-FIXUP.</figcaption>
 </figure>
 
@@ -212,14 +212,14 @@ Cases 2 and 3 correct the lone violation of property 4, and they do not introduc
 another violation.
 
 Having shown that each iteration of the loop maintains the invariant, we have
-shown that RB-INSERT-FIXUP correctly restores the red-black properties.
+shown that `RB-INSERT-FIXUP` correctly restores the red-black properties.
 
 **Analysis**
 
-What is the running time of RB-INSERT? Since the height of a red-black tree on n
-nodes is O(lg n), lines 1–16 of RB-INSERT take O(lg n) time. In RB-INSERTFIXUP,
+What is the running time of `RB-INSERT`? Since the height of a red-black tree on n
+nodes is O(lg n), lines 1–16 of `RB-INSERT` take O(lg n) time. In `RB-INSERTFIXUP`,
 the while loop repeats only if case 1 occurs, and then the pointer z moves
 two levels up the tree. The total number of times the while loop can be executed
-is therefore O(lg n). Thus, RB-INSERT takes a total of O(lg n) time. Moreover, it
+is therefore O(lg n). Thus, `RB-INSERT` takes a total of O(lg n) time. Moreover, it
 never performs more than two rotations, since the while loop terminates if case 2
 or case 3 is executed.
