@@ -2,7 +2,7 @@
 layout: post
 title: "Red-Black Trees(1)"
 categories: blog
-excerpt:
+excerpt: "Properties of red-black trees"
 tags: [Algotithms, Red-Black-Trees]
 share: true
 image:

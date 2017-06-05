@@ -2,7 +2,7 @@
 layout: post
 title: "Red-Black Trees(2)"
 categories: blog
-excerpt:
+excerpt: "Insertion"
 tags: [Algotithms, Red-Black-Trees]
 share: true
 image:

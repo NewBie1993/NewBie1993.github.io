@@ -2,7 +2,7 @@
 layout: post
 title: "Regular Expression"
 categories: blog
-excerpt:
+excerpt: "Regular Expression Summary"
 tags: [Regex]
 share: true
 image:

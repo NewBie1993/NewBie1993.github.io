@@ -2,7 +2,7 @@
 layout: post
 title: "Red-Black Trees(3)"
 categories: blog
-excerpt:
+excerpt: "Deletion"
 tags: [Algotithms, Red-Black-Trees]
 share: true
 image:
