@@ -137,15 +137,15 @@ RB-DELETE-FIXUP(T, x)
 10            w.color = RED                       // case 2
 11            x = x.p                             // case 2
 12        else if w.right.color == BLACK
-13            w.left.color = BLACK                // case 3
-14            w.color = RED                       // case 3
-15            RIGHT-ROTATE(T, w)                  // case 3
-16            w = x.p.right                       // case 3
-17        w.color = x.p.color                     // case 4
-18        x.p.color = BLACK                       // case 4
-19        w.right.color = BLACK                   // case 4
-20        LEFT-ROTATE(T, x.p)                     // case 4
-21        x = T.root                              // case 4
+13                w.left.color = BLACK            // case 3
+14                w.color = RED                   // case 3
+15                RIGHT-ROTATE(T, w)              // case 3
+16                w = x.p.right                   // case 3
+17            w.color = x.p.color                 // case 4
+18            x.p.color = BLACK                   // case 4
+19            w.right.color = BLACK               // case 4
+20            LEFT-ROTATE(T, x.p)                 // case 4
+21            x = T.root                          // case 4
 22    else (same as then clause with “right” and “left” exchanged)
 23 x.color = BLACK
 ```
@@ -184,6 +184,7 @@ the value c of the `color` attribute of the new node x is RED, and the loop term
 when it tests the loop condition. We then color the new node x (singly) black in line 23.
 
 *Case 3: x’s sibling w is black, w’s left child is red, and w’s right child is black*
+
 Case 3 (lines 13–16 and Figure 1(c)) occurs when w is black, its left child
 is red, and its right child is black. We can switch the colors of w and its left
 child w.left and then perform a right rotation on w without violating any of the
@@ -191,6 +192,7 @@ red-black properties. The new sibling w of x is now a black node with a red righ
 child, and thus we have transformed case 3 into case 4.
 
 *Case 4: x’s sibling w is black, and w’s right child is red*
+
 Case 4 (lines 17–21 and Figure 1(d)) occurs when node x’s sibling w is black
 and w’s right child is red. By making some color changes and performing a left rotation
 on x.p, we can remove the extra black on x, making it singly black, without

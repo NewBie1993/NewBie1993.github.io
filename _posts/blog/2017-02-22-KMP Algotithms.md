@@ -88,7 +88,7 @@ KMP_NEXT(P, m, next) //P为模式串，m为模式串长度
 6        i = i + 1
 7        j = j + 1
 8        next[i] = j
-9    esle
+9    else
 10       j = next[j]
 ```
 
