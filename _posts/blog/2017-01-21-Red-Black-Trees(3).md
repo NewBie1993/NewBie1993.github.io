@@ -93,13 +93,9 @@ RB-DELETE(T, z)
   restore the red-black properties. If y was red, the red-black properties still hold
   when y is removed or moved, for the following reasons:
 
-    1. No black-heights in the tree have changed.
-	  2. No red nodes have been made adjacent. Because y takes z’s place in the
-       tree, along with z’s color, we cannot have two adjacent red nodes at y’s new
-       position in the tree. In addition, if y was not z’s right child, then y’s original
-       right child x replaces y in the tree. If y is red, then x must be black, and so
-       replacing y by x cannot cause two red nodes to become adjacent.
-    3. Since y could not have been the root if it was red, the root remains black.
+  1. No black-heights in the tree have changed.
+	2. No red nodes have been made adjacent. Because y takes z’s place in the tree, along with z’s color, we cannot have two adjacent red nodes at y’s new position in the tree. In addition, if y was not z’s right child, then y’s original right child x replaces y in the tree. If y is red, then x must be black, and so replacing y by x cannot cause two red nodes to become adjacent.
+  3. Since y could not have been the root if it was red, the root remains black.
 
 ## RB-DELETE-FIXUP
 
