@@ -95,6 +95,11 @@ function setDefault(t, d)
 end
 ```
 
-### 总结
+#### 总结
 两种实现方式具有相同的复杂度和性能。 第一种方式每个对象仅需要一小部分内存在关联属性表中保存自己的默认值（weak表中的一条记录）。 第二种方式为每一个默认值生成一个metatable（元表）。 所以， 如果实际中有大量的表默认值都相同， 建议使用第二种方式。 否则， 我们还是应该使用第一种方式实现。
+
+### Ephemeron Tables（蜉蝣表？）
+考虑在key为弱引用， value为强引用的weak表中， value引用了他所对应的key这种情况。 从weak的标准解释来看， 尽管该weak表的key为弱引用， 但它的value并不是， 因此可以理解为还有value这个强引用在引用该key值， 整条记录将不会被移除。 但这么严格的解释并没有什么作用， 因为在实际使用中， 我们都是希望通过key去获取它对应的value。
+
+Lua5.2为了解决该问题引入了Ephemeron Tables的概念。 **key为弱引用， value为强引用的weak表即为Ephemeron Tables(A table with weak keys and strong values is an *ephemeron table*)。** 在一个ephemeron table中， value是否可以获取到， 取决于其对应的key是否可以被获取到。 具体来说， ephemeron table中的一条记录(k, v), 只有在有其他强引用引用k时， 其对应的v才可以被认为是强引用。 否则， 即使v在（直接或间接）引用该k值， 整条记录也会被从该表中移除。
 
