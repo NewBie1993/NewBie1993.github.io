@@ -48,8 +48,8 @@ collectgarbage() --> (prints nothing)
 当直到程序结束， 某些对象也没有被回收时， Lua将会在Lua state被close前调用这些对象的finalizer。 我们可以利用该机制实现Lua中的      atexit功能。 示例如下：
 ```
 _G.AA = {__gc = function ()
--- your 'atexit' code comes here
-print("finishing Lua program")
+    -- your 'atexit' code comes here
+    print("finishing Lua program")
 end}
 setmetatable(_G.AA, _G.AA)
 ```
@@ -57,14 +57,14 @@ setmetatable(_G.AA, _G.AA)
 另一个比较有意思的技术是， 可以在每一个垃圾回收周期结束的时候调用一个函数。 因为对象只能被finalize一次， 我们可以在finalizer中生成一个新对象使其在下一次中运行finalizer。 具体如下：
 ```
 do
-local mt = {__gc = function (o)
--- whatever you want to do
-print("new cycle")
--- creates new object for next cycle
-setmetatable({}, getmetatable(o))
-end}
--- creates first object
-setmetatable({}, mt)
+  local mt = {__gc = function (o)
+    -- whatever you want to do
+    print("new cycle")
+    -- creates new object for next cycle
+    setmetatable({}, getmetatable(o))
+  end}
+  -- creates first object
+  setmetatable({}, mt)
 end
 collectgarbage() --> new cycle
 collectgarbage() --> new cycle
@@ -81,8 +81,8 @@ wv = setmetatable({}, {__mode = "v"})
 o = {} -- an object
 wv[1] = o; wk[o] = 10 -- add it to both tables
 setmetatable(o, {__gc = function (o)
-print(wk[o], wv[1])
-end})
+    print(wk[o], wv[1])
+  end})
 o = nil
 collectgarbage() --> 10 nil
 ```
