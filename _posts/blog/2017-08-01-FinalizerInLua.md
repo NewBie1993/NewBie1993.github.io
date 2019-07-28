@@ -40,7 +40,7 @@ collectgarbage() --> (prints nothing)
 # 对finalizer的几个误解
 1. 一个常见的误解是认为对象之前的关联关系会影响它们之间被finalize的顺序。 比如想象用Lua实现的一个链表3-->2-->1， 大家可能觉得2必须    在1之前被finalize， 因为2引用了1。 然而， 考虑如果是双向链表呢。 所以说， 对象之间的关联关系不会影响它们之间被finalize的顺序，     仍旧是按照它们被标记的顺序进行。
 
-2. 另一个关于finalizer的复杂点是复活(resurrection)。 当finalizer被调用时， 会将被finalize的对象作为参数传入。 因此， 该对象必须     至少在finalization期间是活着的， 我们称其为短暂复活(transient resurrection)。 (While the finalizer runs, nothing stops it    from storing the object in a global variable, for instance, so that it remains accessible after the finalizer returns.    I call this a permanent resurrection.----目前还没有理解这一段话， 大家有谁明白可以私信我微博[newbie1993](https://www.weibo.com/bangencao1993)^_^)。
+2. 另一个关于finalizer的复杂点是复活(resurrection)。 当finalizer被调用时， 会将被finalize的对象作为参数传入。 因此， 该对象必须     至少在finalization期间是活着的， 我们称其为短暂复活(transient resurrection)。 (While the finalizer runs, nothing stops it    from storing the object in a global variable, for instance, so that it remains accessible after the finalizer returns.    I call this a permanent resurrection.----目前还没有理解这一段话， 大家有谁明白可以私信我微博[laowong](https://www.weibo.com/bangencao1993)^_^)。
 
    因为有复活的存在， 因此有finalizer的对象被回收时会被分为两个阶段。 第一阶段， 垃圾回收器检测关联finalizer的对象已经不被引用， 将其复活并放入待finalize的队列中。 待其finalizer运行之后， 将其标记为已被finalize。 第二阶段，  垃圾回收器检测到其不被引用， 就删除该对象。 如果你想确保程序中的所有垃圾都被回收， 你应该确保垃圾回收器被调用两次， 第二次将会删除在第一次调用中被finalize的对象。
 

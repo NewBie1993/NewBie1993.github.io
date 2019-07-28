@@ -1,5 +1,5 @@
-# 菜鸟博客
+# 老王札记
 
-我的第一个Blog，用来分享和记录自己的学习历程.
+不积跬步，无以至千里；不积小流，无以成江海。
 
 ![screenshot of the blog](./images/readme.png)
